@@ -33,14 +33,9 @@
       this.clock.tick(500);
       return expect(this.callback.called).toBe(false);
     });
-    it('calls the callback with the original event', function() {
-      this.$dropdown.trigger('x');
-      return this.clock.tick(300);
-    });
     it('returns the jQuery object for the element', function() {
       return expect(this.returnValue.attr('class')).toBe(this.$dropdown.attr('class'));
     });
-    it('calls the callback with this set as the jquery object', function() {});
     return it('can have multiple cancelling events', function() {});
   });
 

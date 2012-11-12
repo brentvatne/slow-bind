@@ -8,12 +8,12 @@ often a user can briefly hover outside of the container accidentally
 while moving their mouse towards their target.
 
 ```coffeescript
-   # Calls hideMenu on mouseleave unless the mouseenter event is fired
-   # within 500ms of mouseleave
-   $('.dropdown-menu').slowBind hideMenu,
-     triggerEvent: 'mouseleave'
-     cancelEvent:  'mouseenter'
-     wait:          500
+# Calls hideMenu on mouseleave unless the mouseenter event is fired
+# within 500ms of mouseleave
+$('.dropdown-menu').slowBind hideMenu,
+  triggerEvent: 'mouseleave'
+  cancelEvent:  'mouseenter'
+  wait:          500
 ```
 
 If you have Ruby and Bundler installed, you can run the specs with `bundle && rake jasmine` and navigate to http://localhost:8888/

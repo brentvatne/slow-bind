@@ -39,16 +39,9 @@ describe '$.slowBind', ->
 
     expect(@callback.called).toBe(false)
 
-  it 'calls the callback with the original event', ->
-    @$dropdown.trigger('x')
-    @clock.tick(300)
-
   it 'returns the jQuery object for the element', ->
     # jQuery 1.5 does not support $a.is($b)
     expect(@returnValue.attr('class')).toBe(@$dropdown.attr('class'))
-
-  it 'calls the callback with this set as the jquery object', ->
-    # not tested yet
 
   it 'can have multiple cancelling events', ->
     # not yet
