@@ -16,9 +16,11 @@
       restartEvent = options.restartEvent;
       cancelEvent = options.cancelEvent;
       wait = options.wait;
-      this.bind(triggerEvent, function(e) {
-        return wrapCallback(callback, triggerEvent, wait, e);
-      });
+      if (triggerEvent !== restartEvent) {
+        this.bind(triggerEvent, function(e) {
+          return wrapCallback(callback, triggerEvent, wait, e);
+        });
+      }
       if (cancelEvent) {
         this.bind(cancelEvent, function(e) {
           return cancelCallback(triggerEvent);

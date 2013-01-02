@@ -16,7 +16,8 @@
     wait         = options.wait
 
     # A trigger event is always required
-    @.bind triggerEvent, (e) -> wrapCallback(callback, triggerEvent, wait, e)
+    unless triggerEvent == restartEvent
+      @.bind triggerEvent, (e) -> wrapCallback(callback, triggerEvent, wait, e)
 
     # The cancel event is optional
     if cancelEvent
