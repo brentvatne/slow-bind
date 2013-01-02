@@ -11,11 +11,24 @@
 
   $.fn.slowBind = (callback, options) ->
     triggerEvent = options.triggerEvent
+    restartEvent = options.restartEvent
     cancelEvent  = options.cancelEvent
     wait         = options.wait
 
+    # A trigger event is always required
     @.bind triggerEvent, (e) -> wrapCallback(callback, triggerEvent, wait, e)
-    @.bind cancelEvent,  (e) -> cancelCallback(triggerEvent)
+
+    # The cancel event is optional
+    if cancelEvent
+      @.bind cancelEvent, (e) -> cancelCallback(triggerEvent)
+
+    # The restart event is optional. It simply combines the cancel and trigger events
+    if restartEvent
+      @.bind restartEvent, (e) ->
+        cancelCallback(triggerEvent)
+        wrapCallback(callback, triggerEvent, wait, e)
+
+    # Return the jQuery instance
     @
 
 )(jQuery, window)

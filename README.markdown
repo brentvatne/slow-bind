@@ -16,4 +16,13 @@ $('.dropdown-menu').slowBind hideMenu,
   wait:          500
 ```
 
+```coffeescript
+# Calls stretchChartToFit on window resize unless the resize event is fired
+# within 200ms of the previous resize
+$(window).slowBind stretchChartToFit,
+  triggerEvent: 'resize'
+  restartEvent: 'resize'
+  wait:          200
+```
+
 If you have Ruby and Bundler installed, you can run the specs with `bundle && rake jasmine` and navigate to http://localhost:8888/

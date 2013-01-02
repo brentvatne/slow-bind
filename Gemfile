@@ -1,5 +1,7 @@
 source :rubygems
 
+gem 'rake'
+
 group :development do
   gem 'guard'
   gem 'guard-coffeescript'
